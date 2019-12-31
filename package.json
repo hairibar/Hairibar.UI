@@ -1,0 +1,20 @@
+{
+    "name": "com.hairibar.packagename",
+    "version": "0.1.0",
+
+    "displayName": "Hairibar.TheNameOfThisPackage",
+    "description": "This package does things.",
+    "unity": "2018.1",
+    
+    "dependencies": {
+
+    },
+    "keywords": [
+
+    ],
+    "category": "library",
+
+    "author": {
+        "name": "Aitor Iribar"
+    }
+  }
