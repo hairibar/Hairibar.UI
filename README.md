@@ -1,1 +1,1 @@
-# UnityPackageTemplate
+# Hairibar.UI

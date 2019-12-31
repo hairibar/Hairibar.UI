@@ -1,9 +1,9 @@
 {
-    "name": "com.hairibar.packagename",
+    "name": "com.hairibar.ui",
     "version": "0.1.0",
 
-    "displayName": "Hairibar.TheNameOfThisPackage",
-    "description": "This package does things.",
+    "displayName": "Hairibar.UI",
+    "description": "A bunch of UI tools and systems.",
     "unity": "2018.1",
     
     "dependencies": {
