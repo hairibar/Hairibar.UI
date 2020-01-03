@@ -1,0 +1,14 @@
+{
+    "name": "Hairibar.UI.Runtime",
+    "references": [
+		"NaughtyAttributes.Core"	
+	],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
