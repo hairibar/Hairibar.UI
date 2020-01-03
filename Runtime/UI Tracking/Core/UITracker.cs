@@ -3,19 +3,31 @@ using NaughtyAttributes;
 
 namespace Hairibar.UI.Tracking
 {
+    /// <summary>
+    /// Central class for UI tracking behaviours to connect to.
+    /// Do not create via AddComponent<>. Use InstantiateTracker instead.
+    /// </summary>
     [RequireComponent(typeof(CanvasGroup))]
     public class UITracker : MonoBehaviour
     {
         /// <summary>
         /// Instantiates a UITracker with and automatically sets it up.
         /// </summary>
-        public static UITracker InstantiateTracker(UITracker source, UITracked trackedObject)
+        /// <param name="source">The Tracker to instantiate (normally a prefab).</param>
+        /// <param name="trackedObject">The object that this UITracker will track.</param>
+        /// <param name="optionalCanvas">An optional canvas to be used. If no canvas is provided, a new one with default settings will be created for this tracker.</param>
+        /// <returns></returns>
+        public static UITracker InstantiateTracker(UITracker source, UITracked trackedObject, Canvas canvas = null)
         {
-            //Create a canvas
-            GameObject canvasGO = new GameObject($"{trackedObject.gameObject.name}'s UI Tracking Canvas");
-            canvasGO.layer = LayerMask.NameToLayer("UI");
+            if (!canvas)
+            {
+                //Create a canvas
+                GameObject canvasGO = new GameObject($"{trackedObject.gameObject.name}'s UI Tracking Canvas");
+                canvasGO.layer = LayerMask.NameToLayer("UI");
 
-            Canvas canvas = canvasGO.AddComponent<Canvas>();
+                canvas = canvasGO.AddComponent<Canvas>();
+            }
+
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 
             //TODO: Add a CanvasScaler. Where do we get the reference resolution from? Does it even matter?
@@ -33,14 +45,20 @@ namespace Hairibar.UI.Tracking
             return newTracker;
         }
 
-
+        #region Inspector
         [ShowIf("get_ShouldShowCameraOnInspector")]
         public new Camera camera;
-
         private bool ShouldShowCameraOnInspector => !GetComponent<AssignMainCameraOnTracker>();
+        #endregion
 
+        /// <summary>
+        /// The UITracked object tracked by this UITracker.
+        /// </summary>
         public UITracked TrackedObject { get; private set; }
 
+        /// <summary>
+        /// Used to set visibility of the tracker.
+        /// </summary>
         public bool IsVisible
         {
             get => _isVisible;
@@ -71,5 +89,4 @@ namespace Hairibar.UI.Tracking
             canvasGroup = GetComponent<CanvasGroup>();
         }
     }
-
 }
