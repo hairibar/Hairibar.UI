@@ -7,7 +7,7 @@
     "unity": "2018.1",
     
     "dependencies": {
-
+        "com.hairibar.naughtyattributes": "1.2.0"
     },
     "keywords": [
 
