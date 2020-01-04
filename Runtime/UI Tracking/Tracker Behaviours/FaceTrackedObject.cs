@@ -8,7 +8,7 @@ namespace Hairibar.UI.Tracking
     public class FaceTrackedObject : BaseUITrackerBehaviour
     {
         [SerializeField, Tooltip("The direction that the tracker faces towards without applying any rotation.")]
-        private Vector2 baseFacing;
+        private Vector2 baseFacing = new Vector2(1, 0);
 
         private void Update()
         { 
