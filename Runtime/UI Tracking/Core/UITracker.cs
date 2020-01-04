@@ -10,6 +10,7 @@ namespace Hairibar.UI.Tracking
     [RequireComponent(typeof(CanvasGroup))]
     public class UITracker : MonoBehaviour
     {
+        #region Instantiator
         /// <summary>
         /// Instantiates a UITracker with and automatically sets it up.
         /// </summary>
@@ -44,6 +45,7 @@ namespace Hairibar.UI.Tracking
 
             return newTracker;
         }
+        #endregion
 
         #region Inspector
         [ShowIf("get_ShouldShowCameraOnInspector")]
@@ -51,10 +53,14 @@ namespace Hairibar.UI.Tracking
         private bool ShouldShowCameraOnInspector => !GetComponent<AssignMainCameraOnTracker>();
         #endregion
 
+        #region Public Properties
         /// <summary>
         /// The UITracked object tracked by this UITracker.
         /// </summary>
         public UITracked TrackedObject { get; private set; }
+
+        public Vector3 TargetPositionInWorldSpace => TrackedObject.transform.position;
+        public Vector2 TargetPositionInScreenSpace => camera.WorldToViewportPoint(TargetPositionInWorldSpace);
 
         /// <summary>
         /// Used to set visibility of the tracker.
@@ -78,6 +84,8 @@ namespace Hairibar.UI.Tracking
             }
         }
         private bool _isVisible = true;
+        #endregion
+
 
 
         private CanvasGroup canvasGroup;
