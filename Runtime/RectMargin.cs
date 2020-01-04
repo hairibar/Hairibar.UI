@@ -2,7 +2,7 @@
 
 namespace Hairibar.UI
 {
-    public class ScreenSpaceMargin : MonoBehaviour
+    public class RectMargin : MonoBehaviour
     {
         public float marginSize;
 
