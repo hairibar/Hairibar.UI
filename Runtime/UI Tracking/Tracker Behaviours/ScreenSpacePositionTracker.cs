@@ -19,7 +19,7 @@ namespace Hairibar.UI.Tracking
 
         private void Update()
         {
-            Vector3 targetPosition = Tracker.TargetPositionInScreenSpace;
+            Vector3 targetPosition = Tracker.TargetPositionInViewportSpace;
 
             if (clampInsideScreen)
             {

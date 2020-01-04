@@ -60,7 +60,8 @@ namespace Hairibar.UI.Tracking
         public UITracked TrackedObject { get; private set; }
 
         public Vector3 TargetPositionInWorldSpace => TrackedObject.transform.position;
-        public Vector2 TargetPositionInScreenSpace => camera.WorldToViewportPoint(TargetPositionInWorldSpace);
+        public Vector2 TargetPositionInScreenSpace => camera.WorldToScreenPoint(TargetPositionInWorldSpace);
+        public Vector2 TargetPositionInViewportSpace => camera.WorldToViewportPoint(TargetPositionInWorldSpace);
 
         /// <summary>
         /// Used to set visibility of the tracker.
