@@ -63,6 +63,9 @@ namespace Hairibar.UI.Tracking
         public Vector2 TargetPositionInScreenSpace => camera.WorldToScreenPoint(TargetPositionInWorldSpace);
         public Vector2 TargetPositionInViewportSpace => camera.WorldToViewportPoint(TargetPositionInWorldSpace);
 
+        public Vector2 TrackerPositionInScreenSpace => RectTransformUtility.WorldToScreenPoint(null, transform.position);
+        public Vector2 TrackerpositionInViewportSpace => camera.ScreenToViewportPoint(TrackerPositionInScreenSpace);
+
         /// <summary>
         /// Used to set visibility of the tracker.
         /// </summary>
@@ -86,8 +89,6 @@ namespace Hairibar.UI.Tracking
         }
         private bool _isVisible = true;
         #endregion
-
-
 
         private CanvasGroup canvasGroup;
         private float previousCanvasGroupAlpha;
