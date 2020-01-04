@@ -16,6 +16,10 @@ namespace Hairibar.UI.Tracking
             Assert.IsNotNull(uiTrackerPrefab, "UITracked must have a uiTrackerPrefab to instantiate.");
             Tracker = UITracker.InstantiateTracker(uiTrackerPrefab, this);
         }
+
+        private void OnDestroy()
+        {
+            Destroy(Tracker.gameObject);
+        }
     }
 }
-

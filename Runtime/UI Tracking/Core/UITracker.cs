@@ -20,6 +20,7 @@ namespace Hairibar.UI.Tracking
         /// <returns></returns>
         public static UITracker InstantiateTracker(UITracker source, UITracked trackedObject, Canvas canvas = null)
         {
+            bool mustCleanupCanvas = false;
             if (!canvas)
             {
                 //Create a canvas
@@ -27,6 +28,7 @@ namespace Hairibar.UI.Tracking
                 canvasGO.layer = LayerMask.NameToLayer("UI");
 
                 canvas = canvasGO.AddComponent<Canvas>();
+                mustCleanupCanvas = true;
             }
 
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
@@ -42,6 +44,7 @@ namespace Hairibar.UI.Tracking
 
             UITracker newTracker = Instantiate(source, canvas.transform);
             newTracker.TrackedObject = trackedObject;
+            newTracker.mustCleanupCanvasOnDestroy = mustCleanupCanvas;
 
             return newTracker;
         }
@@ -90,13 +93,22 @@ namespace Hairibar.UI.Tracking
         private bool _isVisible = true;
         #endregion
 
+        #region Private State
         private CanvasGroup canvasGroup;
         private float previousCanvasGroupAlpha;
+
+        private bool mustCleanupCanvasOnDestroy;
+        #endregion
 
 
         private void Awake()
         {
             canvasGroup = GetComponent<CanvasGroup>();
+        }
+
+        private void OnDestroy()
+        {
+            if (mustCleanupCanvasOnDestroy) Destroy(transform.parent.gameObject);
         }
     }
 }
