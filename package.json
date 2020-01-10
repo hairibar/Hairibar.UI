@@ -1,22 +1,16 @@
 {
     "name": "com.hairibar.ui",
-    "version": "1.0.0",
-
+    "version": "2.0.0",
     "displayName": "Hairibar.UI",
     "description": "A bunch of UI tools and systems.",
     "unity": "2018.1",
-    
     "dependencies": {
         "com.hairibar.naughtyattributes": "1.2.0"
     },
-    "keywords": [
-
-    ],
+    "keywords": [],
     "category": "library",
-
     "author": {
         "name": "Aitor Iribar"
     },
-
-	"changelog": "CHANGELOG.md"
-  }
+    "changelog": "CHANGELOG.md"
+}
