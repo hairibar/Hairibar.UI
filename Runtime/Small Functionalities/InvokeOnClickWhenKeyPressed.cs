@@ -3,7 +3,11 @@ using UnityEngine.UI;
 
 namespace Hairibar.UI
 {
-    [RequireComponent(typeof(Button))]
+    /// <summary>
+    /// Invokes the attached Button's OnClick when the selected key is pressed.
+    /// Useful for keyboard shortcuts and confirmation buttons.
+    /// </summary>
+    [RequireComponent(typeof(Button)), AddComponentMenu("UI/Invoke OnClick When Key Pressed")]
     public class InvokeOnClickWhenKeyPressed : MonoBehaviour
     {
         public KeyCode key = KeyCode.Return;
@@ -16,5 +20,4 @@ namespace Hairibar.UI
             }
         }
     }
-
 }
