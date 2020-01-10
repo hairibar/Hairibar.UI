@@ -6,8 +6,9 @@ namespace Hairibar.UI.MenuScreenManagement
 {
     /// <summary>
     /// Base class for Menu Screens.
+    /// Each screen should have a component that inherits from this class and implements the screen's functionality.
     /// </summary>
-    [RequireComponent(typeof(CanvasGroup))]
+    [RequireComponent(typeof(CanvasGroup)), DisallowMultipleComponent]
     public abstract class AMenuScreen : MonoBehaviour
     {
         protected MenuScreenManager MenuManager { get; private set; }
@@ -41,7 +42,11 @@ namespace Hairibar.UI.MenuScreenManagement
 
         protected virtual void OnOpen(System.Type previousScreen) { }
         protected virtual void OnClose(System.Type nextScreen) { }
-
+        
+        /// <summary>
+        /// Sets all Selectable objects to non-interactable. 
+        /// Any amount of exceptions can be provided. Exceptions will not have their interactable value changed.
+        /// </summary>
         protected void SetInteractable(bool interactable, params Selectable[] exceptions)
         {
             Selectable[] selectables = GetComponentsInChildren<Selectable>();
@@ -75,4 +80,3 @@ namespace Hairibar.UI.MenuScreenManagement
         }
     }
 }
-

@@ -3,8 +3,18 @@
 #pragma warning disable 649
 namespace Hairibar.UI.MenuScreenManagement
 {
+    /// <summary>
+    /// Central component of the Menu Screen system. 
+    /// Each screen should be a child GameObject of the MenuScreenManager, with a component that inherits from AMenuScreen.
+    /// </summary>
+    [AddComponentMenu("Menu Screens/Menu Screen Manager"), DisallowMultipleComponent]
     public class MenuScreenManager : MonoBehaviour
     {
+        /// <summary>
+        /// The MenuScreen that will be shown first. 
+        /// If changed at runtime, it will only have effect if set before Start() is called.
+        /// </summary>
+        [Tooltip("The MenuScreen that will be shown first. Can also be set at runtime.")]
         public AMenuScreen startingMenuScreen;
 
         private AMenuScreen[] menuScreens;
@@ -39,12 +49,14 @@ namespace Hairibar.UI.MenuScreenManagement
             currentActiveMenuScreen.GoBack();
         }
 
+
+        #region Initialization
         private void Awake()
         {
             InitializeMenuScreens();
         }
 
-        public void InitializeMenuScreens()
+        private void InitializeMenuScreens()
         {
             menuScreens = GetComponentsInChildren<AMenuScreen>(true);
             for (int i = 0; i < menuScreens.Length; i++)
@@ -57,7 +69,6 @@ namespace Hairibar.UI.MenuScreenManagement
         {
             SetActiveMenuScreen(startingMenuScreen);
         }
+        #endregion
     }
-
 }
-
