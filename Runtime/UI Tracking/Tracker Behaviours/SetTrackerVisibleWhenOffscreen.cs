@@ -3,6 +3,7 @@
 #pragma warning disable 649
 namespace Hairibar.UI.Tracking
 {
+    [AddComponentMenu("UI/Tracking/Set Visible When Off Screen"), DisallowMultipleComponent]
     public class SetTrackerVisibleWhenOffscreen : BaseUITrackerBehaviour
     {
         #region Inspector
@@ -24,11 +25,9 @@ namespace Hairibar.UI.Tracking
             }
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             Tracker.IsVisible = TrackedObjectIsOnScreen == invertVisible;
         }
     }
 }
-
-

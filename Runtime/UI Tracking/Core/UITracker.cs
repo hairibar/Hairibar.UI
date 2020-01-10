@@ -5,9 +5,9 @@ namespace Hairibar.UI.Tracking
 {
     /// <summary>
     /// Central class for UI tracking behaviours to connect to.
-    /// Do not create via AddComponent<>. Use InstantiateTracker instead.
+    /// Do not create at runtime via AddComponent<>. Use InstantiateTracker instead.
     /// </summary>
-    [RequireComponent(typeof(CanvasGroup))]
+    [RequireComponent(typeof(CanvasGroup)), DisallowMultipleComponent]
     public class UITracker : MonoBehaviour
     {
         #region Instantiator

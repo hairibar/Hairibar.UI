@@ -5,6 +5,7 @@ namespace Hairibar.UI.Tracking
     /// <summary>
     /// Matches the tracked object's screen space position.
     /// </summary>
+    [AddComponentMenu("UI/Tracking/Match Screen Space Position"), DisallowMultipleComponent]
     public class ScreenSpacePositionTracker : BaseUITrackerBehaviour
     {
         /// <summary>
@@ -13,11 +14,10 @@ namespace Hairibar.UI.Tracking
         [Tooltip("Should the tracker stay at the screen's border when the tracked object goes off the screen?")]
         public bool clampInsideScreen = true;
 
-
         private RectTransform rectTransform;
 
 
-        private void Update()
+        private void LateUpdate()
         {
             Vector3 targetPosition = Tracker.TargetPositionInViewportSpace;
 
