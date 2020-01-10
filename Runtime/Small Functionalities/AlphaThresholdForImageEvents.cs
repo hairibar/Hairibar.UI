@@ -6,7 +6,7 @@ namespace Hairibar.UI
     /// <summary>
     /// Sets a minimum alpha for Pointer Events to apply to this Image. Requires read/write enabled on the sprite.
     /// </summary>
-    [RequireComponent(typeof(Image))]
+    [RequireComponent(typeof(Image)), DisallowMultipleComponent, AddComponentMenu("UI/Alpha Threshold For Image Events")]
     public class AlphaThresholdForImageEvents : MonoBehaviour
     {
         [SerializeField, Range(0, 1)] private float alphaThreshold = 0.1f;
@@ -25,7 +25,6 @@ namespace Hairibar.UI
         {
             GetComponent<Image>().alphaHitTestMinimumThreshold = alphaThreshold;
         }
-
     }
 }
 
