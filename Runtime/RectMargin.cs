@@ -2,6 +2,10 @@
 
 namespace Hairibar.UI
 {
+    /// <summary>
+    /// Creates a parent Rect with the requested margin at runtime.
+    /// </summary>
+    [AddComponentMenu("UI/Rect Margin"), DisallowMultipleComponent, RequireComponent(typeof(RectTransform))]
     public class RectMargin : MonoBehaviour
     {
         public float marginSize;
@@ -21,5 +25,4 @@ namespace Hairibar.UI
             Destroy(this);
         }
     }
-
 }
