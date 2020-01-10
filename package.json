@@ -16,5 +16,7 @@
 
     "author": {
         "name": "Aitor Iribar"
-    }
+    },
+
+	"changelog": "CHANGELOG.md"
   }
