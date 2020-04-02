@@ -23,7 +23,10 @@ namespace Hairibar.UI.Tracking
 
         private void OnDestroy()
         {
-            Destroy(Tracker.gameObject);
+            if (Tracker)
+            {
+                Destroy(Tracker.gameObject);
+            }
         }
     }
 }
