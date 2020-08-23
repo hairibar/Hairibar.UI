@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using NaughtyAttributes;
 
 #pragma warning disable 649
@@ -14,14 +15,18 @@ namespace Hairibar.UI.Tracking
 
         public UITracker Tracker { get; private set; }
 
-
-        private void Start()
+        protected virtual Canvas GetCanvas()
         {
-            Debug.Assert(uiTrackerPrefab, "UITracked must have a uiTrackerPrefab to instantiate.", this);
-            Tracker = UITracker.InstantiateTracker(uiTrackerPrefab, gameObject);
+            return null;
         }
 
-        private void OnDestroy()
+        void Start()
+        {
+            Debug.Assert(uiTrackerPrefab, "UITracked must have a uiTrackerPrefab to instantiate.", this);
+            Tracker = UITracker.InstantiateTracker(uiTrackerPrefab, gameObject, GetCanvas());
+        }
+
+        void OnDestroy()
         {
             if (Tracker)
             {
