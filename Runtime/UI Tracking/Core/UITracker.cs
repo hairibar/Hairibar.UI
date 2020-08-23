@@ -18,13 +18,13 @@ namespace Hairibar.UI.Tracking
         /// <param name="trackedObject">The object that this UITracker will track.</param>
         /// <param name="optionalCanvas">An optional canvas to be used. If no canvas is provided, a new one with default settings will be created for this tracker.</param>
         /// <returns></returns>
-        public static UITracker InstantiateTracker(UITracker source, UITracked trackedObject, Canvas canvas = null)
+        public static UITracker InstantiateTracker(UITracker source, GameObject trackedObject, Canvas canvas = null)
         {
             bool mustCleanupCanvas = false;
             if (!canvas)
             {
                 //Create a canvas
-                GameObject canvasGO = new GameObject($"{trackedObject.gameObject.name}'s UI Tracking Canvas");
+                GameObject canvasGO = new GameObject($"{trackedObject.name}'s UI Tracking Canvas");
                 canvasGO.layer = LayerMask.NameToLayer("UI");
 
                 canvas = canvasGO.AddComponent<Canvas>();
@@ -58,9 +58,9 @@ namespace Hairibar.UI.Tracking
 
         #region Public Properties
         /// <summary>
-        /// The UITracked object tracked by this UITracker.
+        /// The GameObject tracked by this UITracker.
         /// </summary>
-        public UITracked TrackedObject { get; private set; }
+        public GameObject TrackedObject { get; private set; }
 
         public Vector3 TargetPositionInWorldSpace => TrackedObject.transform.position;
         public Vector2 TargetPositionInScreenSpace => camera.WorldToScreenPoint(TargetPositionInWorldSpace);
